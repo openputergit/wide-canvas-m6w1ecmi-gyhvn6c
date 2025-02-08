@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Warden - Blockchain Forensics Made Simple</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #008080;
+            --secondary: #005959;
+            --accent: #00a3a3;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        .neu-border {
+            border: 3px solid black;
+            box-shadow: 5px 5px 0px black;
+        }
+
+        .neu-button {
+            transition: all 0.2s ease;
+        }
+
+        .neu-button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px black;
+        }
+
+        .sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .overlay.active {
+            opacity: 0.5;
+            visibility: visible;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .blockchain-bg {
+            background: linear-gradient(rgba(0, 128, 128, 0.9), rgba(0, 128, 128, 0.9)),
+                        url('https://images.unsplash.com/photo-1639322537228-f710d846310a') center/cover;
+        }
+    </style>
+</head>
+
+<body class="blockchain-bg">
+    <div class="overlay fixed inset-0 bg-black z-40" onclick="toggleSidebar()"></div>
+    
+    <div class="sidebar fixed top-0 left-0 h-full w-64 bg-teal-800 text-white neu-border z-50">
+        <div class="p-6 flex flex-col h-full">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-xl font-bold">BLOCK WARDEN</span>
+                <button onclick="toggleSidebar()" class="text-2xl"><i class="bi bi-x text-white"></i></button>
+            </div>
+            <nav class="space-y-6 flex-grow">
+                <a href="#features" class="block font-bold hover:text-teal-300" onclick="toggleSidebar()">Features</a>
+                <a href="#howitworks" class="block font-bold hover:text-teal-300" onclick="toggleSidebar()">How it Works</a>
+                <a href="#about" class="block font-bold hover:text-teal-300" onclick="toggleSidebar()">About Us</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="#contact" class="block font-bold hover:text-teal-300" onclick="toggleSidebar()">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <header class="p-4 bg-teal-800 border-b-4 border-black sticky top-0 z-30">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <button onclick="toggleSidebar()" class="text-2xl"><i class="bi bi-list text-white"></i></button>
+                <div class="text-2xl font-bold text-white">BLOCK WARDEN</div>
+                <button class="neu-button neu-border bg-teal-600 text-white px-6 py-2">Try Now</button>
+            </div>
+        </header>
+
+        <section id="home" class="py-20 px-4">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white">ASK. INVESTIGATE. UNCOVER.</h1>
+                <p class="text-xl mb-10 max-w-2xl mx-auto text-white">
+                    A natural language blockchain forensics platform that makes investigation simple and efficient
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <button class="neu-button neu-border bg-teal-600 text-white px-8 py-4 text-lg">
+                        Start Free Trial
+                    </button>
+                    <button class="neu-button neu-border bg-teal-800 text-white px-8 py-4 text-lg">
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20 px-4 bg-white/90">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16 text-teal-800">Key Features</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="neu-border bg-teal-800 p-6 feature-card">
+                        <i class="bi bi-translate text-4xl text-white"></i>
+                        <h3 class="text-xl font-bold mt-4 text-white">Natural Language Processing</h3>
+                        <p class="mt-2 text-white">Query blockchain data using simple English - no technical expertise required.</p>
+                    </div>
+                    <div class="neu-border bg-teal-800 p-6 feature-card">
+                        <i class="bi bi-shield-check text-4xl text-white"></i>
+                        <h3 class="text-xl font-bold mt-4 text-white">Multi-Chain Support</h3>
+                        <p class="mt-2 text-white">Initially focusing on Solana, expanding to multiple blockchain networks.</p>
+                    </div>
+                    <div class="neu-border bg-teal-800 p-6 feature-card">
+                        <i class="bi bi-graph-up text-4xl text-white"></i>
+                        <h3 class="text-xl font-bold mt-4 text-white">Pattern Detection</h3>
+                        <p class="mt-2 text-white">Identify suspicious transactions and behavior patterns automatically.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional sections would go here -->
+
+    </main>
+
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.overlay').classList.toggle('active');
+        }
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
